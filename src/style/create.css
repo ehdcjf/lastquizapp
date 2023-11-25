@@ -106,7 +106,7 @@
 	align-items: center;
 }
 
-.create_quiz_item_title{
+.create_quiz_item_content{
 	flex-grow: 1;
 	flex-shrink: 1;
 	text-align: left;

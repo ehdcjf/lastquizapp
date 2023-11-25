@@ -29,9 +29,9 @@ export class Router {
         }
 
         showPage(name: string) {
+                console.log("count show");
                 this.hideAllPages();
-                const component = this.viewMap.get(name);
-                component.show();
+                this.viewMap.get(name).show();
         }
 
         initPage(name: string) {
@@ -44,14 +44,15 @@ export abstract class BasePage {
         constructor(elementId: string) {
                 this.root = document.querySelector(elementId);
         }
+
         hide() {
                 this.root.style.display = "none";
         }
 
-        show() {
+        async show() {
+                await this.render();
                 this.root.style.display = "flex";
-                this.render();
         }
 
-        abstract render(): void;
+        abstract render(): Promise<void>;
 }

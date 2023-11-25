@@ -13,8 +13,7 @@
 			</div>
 			<div id="my_quiz_list_contaier" class="home_item">
 				<h3 id="my_quiz_head">내가 만든 퀴즈</h3>
-				<ul id="my_quiz_list">
-				</ul>
+				<ul id="my_quiz_list"></ul>
 			</div>
 		</section>
 		<section id="create">
@@ -25,52 +24,15 @@
 			</div>
 			<div id="create_quiz_name_container">
 				<h3 id="create_quiz_name">퀴즈 이름</h3>
-				<input id="create_quiz_name_input" spellcheck="false" type="text">
+				<input id="create_quiz_name_input" placeholder="퀴즈 이름을 입력해주세요" spellcheck="false" type="text">
 
 			</div>
 			<div id="create_quiz_list_container">
 				<h3 id="my_quiz_head">질문 목록</h3>
-				<ul id="create_quiz_list">
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">내가 아는 프론트 개발자는 테일윈드 쓴다</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">낭만 없는 프론트 개발자는 테일윈드 쓴다</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">CSS 귀재가 아니면 테일윈드 쓰랑께?</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">테일윈드 쓰면 CSS귀재가 될 수 없다</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">CSS 귀재가 될 필요가 있노?</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">뭐든 귀재가 되면 좋당께?</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-					<li class="create_quiz_item">
-						<div class="create_quiz_item_type"></div>
-						<div class="create_quiz_item_title">퀴즈ddddddddddddddddddddddddddddddddddddddddddddssssssssssssssssssss아이템 입니다.</div>
-						<div class="create_quiz_item_delete_btn"></div>
-					</li>
-				
-				</ul>
+				<ul id="create_quiz_list"></ul>
 			</div>
 		</section> 
-		 <!-- <section id="quiz">
+		 <section id="quiz">
 			<div id="quiz_type_container">
 				<div class="quiz_type_btn" id="quiz_type_4answer" ><img class="quiz_type_img" src="./assets/choose.png" alt=""> <div>객관식</div></div>
 				<div class="quiz_type_btn" id="quiz_type_ox"><img class="quiz_type_img" src="./assets/vote.png" alt=""><div>OX</div></div>
@@ -93,16 +55,16 @@
 			</div>
 			<div class="quiz_answer_container" id="quiz_4answer_container">
 				<div>
-					<strong>1</strong><textarea name="" placeholder="보기를 작성해주세요" id="quiz_question"  spellcheck="false"></textarea>
+					<strong>1</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer1" class="quiz_answer_textarea" spellcheck="false"></textarea>
 				</div>
 				<div>
-					<strong>2</strong><textarea name="" placeholder="보기를 작성해주세요" id="quiz_question"  spellcheck="false"></textarea>
+					<strong>2</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer2" class="quiz_answer_textarea" spellcheck="false"></textarea>
 				</div>
 				<div>
-					<strong>3</strong><textarea name="" placeholder="보기를 작성해주세요" id="quiz_question"  spellcheck="false"></textarea>
+					<strong>3</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer3" class="quiz_answer_textarea" spellcheck="false"></textarea>
 				</div>
 				<div>
-					<strong>4</strong><textarea name="" placeholder="보기를 작성해주세요" id="quiz_question"  spellcheck="false"></textarea>
+					<strong>4</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer4" class="quiz_answer_textarea" spellcheck="false"></textarea>
 				</div>
 			</div>
 			<div class="quiz_answer_container" id="quiz_ox_container">
@@ -116,13 +78,13 @@
 			<div class="quiz_answer_container" id="quiz_typing_container">
 
 			</div>
-			<div id="quiz_action_btn_container">
-				<div>취소</div>
-				<div>완료</div>
+			<div id="quiz_item_action_btn_container">
+				<div id="quiz_item_complete_btn">완료</div>
+				<div id="quiz_item_cancle_btn" >취소</div>
 			</div>
 
 			
-		 </section>  -->
+		 </section>  
 		<!--<section id="play"></section>
 		<section id="history"></section> -->
 

@@ -7,6 +7,7 @@ import { Database } from "./database";
 import { Router } from "./router";
 import { Home } from "./pages/home";
 import { Create } from "./pages/create";
+import { Item } from "./pages/quiz";
 // const database = Database.getInstance();
 
 // document.querySelectorAll(".quiz_start_btn").forEach((ele: HTMLDivElement) => {
@@ -49,7 +50,7 @@ import { Create } from "./pages/create";
 
 async function main() {
         await Database.getInstance().init();
-        Router.getInstance().addPage(new Home()).addPage(new Create()).initPage("home");
+        Router.getInstance().addPage(Home.getInstance()).addPage(new Create()).addPage(new Item()).initPage("home");
 }
 
 document.querySelectorAll("textarea").forEach((element: HTMLTextAreaElement) => {

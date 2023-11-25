@@ -3,12 +3,14 @@ import { Database } from "../database";
 import { Memory } from "../memory";
 import { QuizList } from "../interfaces";
 export class Home extends BasePage {
+        static instance: Home;
         router: Router;
         private db: Database;
         private memory: Memory;
         private quizUL: HTMLUListElement;
-        constructor() {
+        private constructor() {
                 super("#home");
+
                 this.router = Router.getInstance();
                 this.db = Database.getInstance();
                 this.memory = Memory.getInstance();
@@ -16,12 +18,18 @@ export class Home extends BasePage {
 
                 document.querySelector("#create_quiz_btn").addEventListener("click", this.createQuiz.bind(this));
         }
+
+        static getInstance() {
+                Home.instance ??= new Home();
+                return Home.instance;
+        }
         // 만들기 버튼 =>myquiz 배열 새로 추가, now_zuiz는 새로 추가된 배열 인덱스  =>  만들기 페이지
         // 퀴즈 아이템 => 시작 => 퀴즈 시작 페이지
         // 퀴즈 아이템 => 수정, now_zuiz는 선택된 인덱스 => 만들기 페이지
         // 퀴즈 아이템 => 삭제 => 퀴즈 삭제 팝업
 
         async render() {
+                this.quizUL.replaceChildren();
                 const quizList = await this.db.getAllQuizWithCursor();
                 quizList.forEach((quiz) => {
                         const key = quiz.key;
@@ -65,7 +73,7 @@ export class Home extends BasePage {
                         quizItem.appendChild(updateBtn);
                         quizItem.appendChild(deleteBtn);
 
-                        this.quizUL.append(quizItem);
+                        this.quizUL.appendChild(quizItem);
                 });
         }
 

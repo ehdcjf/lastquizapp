@@ -1,8 +1,10 @@
+export type QuizType = "four" | "ox" | "typing";
+export type QuizPoint = "standard" | "double" | "none";
 export interface Quiz {
-        type: "four" | "ox" | "typing";
+        type: QuizType;
         question: string;
         timer: number;
-        point: "standard" | "double" | "none";
+        point: QuizPoint;
 }
 
 export interface FourChoiceQuiz extends Quiz {

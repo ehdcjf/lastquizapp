@@ -92,7 +92,7 @@ export class Database {
         }
 
         //퀴즈불러오기
-        getQuiz(key: IDBValidKey) {
+        getQuiz(key: IDBValidKey): Promise<QuizList> {
                 return new Promise((resolve) => {
                         const transaction = this.db.transaction(["quiz"], "readonly");
 
