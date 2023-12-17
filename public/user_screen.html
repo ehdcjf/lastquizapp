@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Last</title>
+</head>
+<body>
+	<script src="https://static.afreecatv.com/asset/app/extension-helper/afreecatv-extension-sdk.js"></script>
+	<main>
+		<section id="ready_user">
+			<h3 id="ready_text">
+				퀴즈를 기다리는 중입니다. 
+			</h3>
+	</section>
+		<section id="play_user">
+			<div id="play_quiz_option_container">
+				<h4 ><img id="play_quiz_type_img" src="" alt=""><span id="play_quiz_type"></span></h4>
+				<h4 > <img id="play_quiz_img" src="./assets/stopwatch.png" alt=""><span id="play_quiz_timer"></span></h4>
+				<h4 ><img id="play_quiz_img" src="./assets/review.png" alt=""> <span id="play_quiz_point"></span></h4>
+			</div>
+
+			<div id="play_quiz_question_container">
+				<p id="play_quiz_question"></p>
+			</div>
+			
+			<div class="play_quiz_answer_container" data-value="four" id="quiz_4answer_container">
+				<ul id="play_quiz_choices_container">
+					<li class="play_quiz_choices_li" data-value="1"><span>1.</span><div class="play_quiz_choice_content"></div></li>
+					<li class="play_quiz_choices_li" data-value="2"><span>2.</span><div class="play_quiz_choice_content"></div></li>
+					<li class="play_quiz_choices_li" data-value="3"><span>3.</span><div class="play_quiz_choice_content"></div></li>
+					<li class="play_quiz_choices_li" data-value="4"><span>4.</span><div class="play_quiz_choice_content"></div></li>
+					
+				</ul>
+			</div>
+			<div class="play_quiz_answer_container" data-value="ox" id="quiz_ox_container">
+					<div id="ox_answer_container">
+						<div class="ox_answer" id="play_o_answer">
+							O
+						</div>
+						<div class="ox_answer" id="play_x_answer">
+							X
+						</div>
+					</div>
+			</div>
+			<div class="play_quiz_answer_container" data-value="typing" id="quiz_typing_container">
+				<div id="typing_answer_input_box">
+					<!-- <label>정답 추가</label> -->
+					<input id="typing_answer_submit_input" type="text">
+					<div id="typing_answer_submit_btn" ><img src="./assets/enter.png" alt=""></div>
+				</div>
+			</div>
+
+		</section>
+	</main>
+</body>
+</html>

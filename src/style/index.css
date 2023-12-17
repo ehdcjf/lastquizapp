@@ -13,13 +13,18 @@
 }
 
 html{
-	font-size: 16px;
+	font-size: 18px;
 }
 
 body{
 	font-family: 'EASTARJET-Medium';
 	min-height: 100vh;
 	min-width: 100vw;
+}
+
+
+textarea, span, strong, input, li, p, div{
+	font-family: 'EASTARJET-Medium';
 }
 
 main{
@@ -31,6 +36,8 @@ section{
 	min-height: 100vh;
 	min-width: 100vw;
 	display: none;
+	overflow-x: hidden;
+
 }
 
 

@@ -2,11 +2,12 @@ export class Router {
         private static instance: Router;
         private main: HTMLElement;
         private viewMap: Map<any, BasePage>;
-
+        page:string;
         private constructor() {
                 if (Router.instance) return Router.instance;
                 this.main = document.querySelector("main");
                 this.viewMap = new Map();
+                this.page = 'home';
                 Router.instance = this;
                 return this;
         }
@@ -29,7 +30,7 @@ export class Router {
         }
 
         showPage(name: string) {
-                console.log("count show");
+                console.log("count show",name);
                 this.hideAllPages();
                 this.viewMap.get(name).show();
         }

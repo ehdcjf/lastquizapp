@@ -7,6 +7,7 @@
 // };
 
 import { QuizList } from "./interfaces";
+import { TITLE_DECO } from "./title_deco";
 
 export class Database {
         private db: IDBDatabase;
@@ -26,15 +27,19 @@ export class Database {
                         };
 
                         requeset.onsuccess = (event) => {
+                                console.log('onsuccess')
                                 this.db = (event.target as any).result;
                                 resolve(true);
                         };
                         requeset.onupgradeneeded = (event) => {
                                 // DB 초기 설정
+                                console.log('onupgradeneeded')
                                 this.db = (event.target as any).result;
                                 const objectStore = this.db.createObjectStore("quiz", {
                                         autoIncrement: true,
                                 });
+                                resolve(true);
+
                         };
                 });
         }
@@ -44,7 +49,7 @@ export class Database {
                 return new Promise(async (resolve) => {
                         const result = [];
 
-                        const transaction = this.db.transaction(["quiz"], "readonly");
+                        const transaction = this.db.transaction("quiz", "readonly");
 
                         const objectStore = transaction.objectStore("quiz");
 
@@ -79,8 +84,10 @@ export class Database {
                         const transaction = this.db.transaction(["quiz"], "readwrite");
 
                         const objectStore = transaction.objectStore("quiz");
-
-                        const objectStoreRequest = objectStore.add({ title: "newQuiz", list: [] });
+                        const rand =
+			Math.floor(Math.random() * 10000) % TITLE_DECO.length;
+		 
+                        const objectStoreRequest = objectStore.add({ title: TITLE_DECO[rand]+' 퀴즈', list: [] });
 
                         objectStoreRequest.onsuccess = (e) => {};
 

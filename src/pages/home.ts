@@ -3,12 +3,11 @@ import { Database } from "../database";
 import { Memory } from "../memory";
 import { QuizList } from "../interfaces";
 export class Home extends BasePage {
-        static instance: Home;
         router: Router;
         private db: Database;
         private memory: Memory;
         private quizUL: HTMLUListElement;
-        private constructor() {
+         constructor() {
                 super("#home");
 
                 this.router = Router.getInstance();
@@ -19,17 +18,17 @@ export class Home extends BasePage {
                 document.querySelector("#create_quiz_btn").addEventListener("click", this.createQuiz.bind(this));
         }
 
-        static getInstance() {
-                Home.instance ??= new Home();
-                return Home.instance;
-        }
+
         // 만들기 버튼 =>myquiz 배열 새로 추가, now_zuiz는 새로 추가된 배열 인덱스  =>  만들기 페이지
         // 퀴즈 아이템 => 시작 => 퀴즈 시작 페이지
         // 퀴즈 아이템 => 수정, now_zuiz는 선택된 인덱스 => 만들기 페이지
         // 퀴즈 아이템 => 삭제 => 퀴즈 삭제 팝업
 
         async render() {
-                this.quizUL.replaceChildren();
+                
+                while(this.quizUL.firstChild){
+                        this.quizUL.removeChild(this.quizUL.firstChild);
+                }
                 const quizList = await this.db.getAllQuizWithCursor();
                 quizList.forEach((quiz) => {
                         const key = quiz.key;
@@ -42,22 +41,22 @@ export class Home extends BasePage {
                         nameText.classList.add("my_quiz_name");
                         nameText.innerText = title;
 
-                        const startBtn = document.createElement("div");
-                        startBtn.classList.add("quiz_start_btn");
+                        // const startBtn = document.createElement("div");
+                        // startBtn.classList.add("quiz_start_btn");
 
-                        const startImg = document.createElement("img");
-                        startImg.src = "./assets/play.png";
-                        startImg.style.width = "24px";
-                        startImg.style.height = "24px";
-                        startBtn.appendChild(startImg);
+                        // const startImg = document.createElement("img");
+                        // startImg.src = "./assets/play.png";
+                        // startImg.style.width = "24px";
+                        // startImg.style.height = "24px";
+                        // startBtn.appendChild(startImg);
 
-                        const updateBtn = document.createElement("div");
-                        updateBtn.classList.add("quiz_update_btn");
-                        const pencilImg = document.createElement("img");
-                        pencilImg.src = "./assets/pencil.png";
-                        pencilImg.style.width = "24px";
-                        pencilImg.style.height = "24px";
-                        updateBtn.appendChild(pencilImg);
+                        // const updateBtn = document.createElement("div");
+                        // updateBtn.classList.add("quiz_update_btn");
+                        // const pencilImg = document.createElement("img");
+                        // pencilImg.src = "./assets/pencil.png";
+                        // pencilImg.style.width = "24px";
+                        // pencilImg.style.height = "24px";
+                        // updateBtn.appendChild(pencilImg);
 
                         const deleteBtn = document.createElement("div");
                         deleteBtn.classList.add("quiz_delete_btn");
@@ -67,11 +66,22 @@ export class Home extends BasePage {
                         deleteImg.style.width = "24px";
                         deleteImg.style.height = "24px";
                         deleteBtn.appendChild(deleteImg);
+                        deleteBtn.addEventListener('click',async (e)=>{
+                                e.stopPropagation();
+                                await Database.getInstance().deleteQuiz(key);
+                                this.quizUL.removeChild(quizItem);
+                        } )
+
 
                         quizItem.appendChild(nameText);
-                        quizItem.appendChild(startBtn);
-                        quizItem.appendChild(updateBtn);
+                        // quizItem.appendChild(startBtn);
+                        // quizItem.appendChild(updateBtn);
                         quizItem.appendChild(deleteBtn);
+
+                        quizItem.addEventListener('click',()=>{
+                                Memory.getInstance().setNowQuizKey(key);
+                                this.router.showPage("create");
+                        })
 
                         this.quizUL.appendChild(quizItem);
                 });
@@ -82,4 +92,5 @@ export class Home extends BasePage {
                 this.memory.setNowQuizKey(newQuizKey);
                 this.router.showPage("create");
         }
+        
 }

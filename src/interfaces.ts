@@ -18,12 +18,15 @@ export interface OXQuiz extends Quiz {
         answer: boolean;
 }
 export interface TypingQuiz extends Quiz {
-        type: "ox";
+        type: "typing";
         answers: string[];
 }
+
+
+export type QuizItemType = FourChoiceQuiz| OXQuiz| TypingQuiz
 
 export interface QuizList {
         title: string;
         key?: IDBValidKey;
-        list: (FourChoiceQuiz | OXQuiz | TypingQuiz)[];
+        list: QuizItemType[];
 }

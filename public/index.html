@@ -16,10 +16,15 @@
 				<ul id="my_quiz_list"></ul>
 			</div>
 		</section>
+
 		<section id="create">
+			
 			<div id="create_head_container">
 				<h2 class="create_quiz_nav_btn" id="create_back_btn"><img src="./assets/back.png" alt=""></h2>
-				<h1 id="create_head">퀴즈 만들기</h1>
+				<h2 id="create_quiz_start_btn">
+					<img src="./assets/play.png" alt="">
+					<strong>퀴즈 시작하기</strong>
+				</h2>
 				<h2 class="create_quiz_nav_btn" id="create_quiz_item_btn"><img src="./assets/square_plus_icon.png" alt=""></h2>
 			</div>
 			<div id="create_quiz_name_container">
@@ -28,15 +33,67 @@
 
 			</div>
 			<div id="create_quiz_list_container">
-				<h3 id="my_quiz_head">질문 목록</h3>
+				<div id="my_quiz_head_box">
+					<h3 id="my_quiz_head">질문 목록</h3>
+					<span id="invalid_quiz">퀴즈를 추가해주세요<span> 
+				</div>
 				<ul id="create_quiz_list"></ul>
 			</div>
 		</section> 
 		 <section id="quiz">
+			<div id="timer_popup" class="popup">
+				<div class="popup_content">
+					<h3 class="popup_head">
+						퀴즈 제한 시간를 선택해주세요.
+					</h3>
+					<div id="timer_container">
+						<div class="timer_item" data-value="5">5초</div>
+						<div class="timer_item" data-value="10">10초</div>
+						<div class="timer_item" data-value="20">20초</div>
+						<div class="timer_item" data-value="30">30초</div>
+						<div class="timer_item" data-value="60">60초</div>
+						<div class="timer_item" data-value="90">90초</div>
+						<div class="timer_item" data-value="120">120초</div>
+						<div class="timer_item" data-value="180">180초</div>
+						<div class="timer_item" data-value="240">240초</div>
+					</div>
+					
+				</div>
+			</div>
+			<div id="point_popup" class="popup">
+				<div class="popup_content">
+					<h3 class="popup_head">
+						퀴즈 포인트 산정 방식을 선택해주세요
+					</h3>
+					<div>
+						<ul class="point_container">
+							<li class="point_box point_standard" data-value="standard">
+								<h5 class="point_head point_standard ">표준</h5>
+								<div class="point_detail point_standard">
+									정답을 맞히면 일반적인 수준의 포인트를 획득합니다. 
+								</div>	
+							</li>
+							<li class="point_box point_double" data-value="double">
+								<h5 class="point_head point_double">더블</h5>
+								<div class="point_detail point_double">
+									정답을 맞히면 포인트를 두 배로 획득합니다. 
+								</div>
+							</li>
+							<li class="point_box point_none" data-value="none">
+								<h5 class="point_head point_none">없음</h5>
+								<div class="point_detail point_none">
+									포인트를 획득하지 않습니다. 
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
 			<div id="quiz_type_container">
-				<div class="quiz_type_btn" id="quiz_type_4answer" ><img class="quiz_type_img" src="./assets/choose.png" alt=""> <div>객관식</div></div>
-				<div class="quiz_type_btn" id="quiz_type_ox"><img class="quiz_type_img" src="./assets/vote.png" alt=""><div>OX</div></div>
-				<div class="quiz_type_btn" id="quiz_type_typing"><img class="quiz_type_img" src="./assets/keyboard.png" alt=""><div>단답형</div></div>
+				<div class="quiz_type_btn" data-value="four" id="quiz_type_4answer" ><img class="quiz_type_img" src="./assets/choose.png" alt=""> <div>객관식</div></div>
+				<div class="quiz_type_btn" data-value='ox'id="quiz_type_ox"><img class="quiz_type_img" src="./assets/vote.png" alt=""><div>OX</div></div>
+				<div class="quiz_type_btn" data-value="typing"  id="quiz_type_typing"><img class="quiz_type_img" src="./assets/keyboard.png" alt=""><div>단답형</div></div>
 			</div>
 			<div id="quiz_question_container">
 				<textarea name="" placeholder="질문을 입력해주세요" id="quiz_question"  spellcheck="false"></textarea>
@@ -50,43 +107,149 @@
 					<img id="point_img" src="./assets/review.png" alt="">
 					<div id="point_text">표준</div>
 				</div>
-				
+			</div>
+			
+			<div class="quiz_answer_container" data-value="four" id="quiz_4answer_container">
+				<div id="four_require_text"></div>
+				<div>
+					<label class='checkbox'>
+						<input type='checkbox' name='choice' value='1' />
+						<span class="icon"></span>
+						<strong >1</strong>
+					</label>
+					
+					<textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer1" class="quiz_answer_textarea" spellcheck="false"></textarea>
+				</div>
+				<div>
+					<label class='checkbox'>
+						<input type='checkbox' name='choice' value='2' />
+						<span class="icon"></span>
+						<strong >2</strong>
+					</label>
+					<textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer2" class="quiz_answer_textarea" spellcheck="false"></textarea>
+				</div>
+				<div>
+					<label class='checkbox'>
+						<input type='checkbox' name='choice' value='3' />
+						<span class="icon"></span>
+						<strong >3</strong>
+					</label>
+					<textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer3" class="quiz_answer_textarea" spellcheck="false"></textarea>
+				</div>
+				<div>
+					<label class='checkbox'>
+						<input type='checkbox' name='choice' value='4' />
+						<span class="icon"></span>
+						<strong >4</strong>
+					</label>
+					<textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer4" class="quiz_answer_textarea" spellcheck="false"></textarea>
+				</div>
+			</div>
+			<div class="quiz_answer_container" data-value="ox" id="quiz_ox_container">
+				<div id="ox_require_text"></div>
+					<div id="ox_answer_container">
 
+						<div class="ox_answer" id="o_answer">
+							O
+						</div>
+						<div class="ox_answer" id="x_answer">
+							X
+						</div>
+					</div>
 			</div>
-			<div class="quiz_answer_container" id="quiz_4answer_container">
-				<div>
-					<strong>1</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer1" class="quiz_answer_textarea" spellcheck="false"></textarea>
-				</div>
-				<div>
-					<strong>2</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer2" class="quiz_answer_textarea" spellcheck="false"></textarea>
-				</div>
-				<div>
-					<strong>3</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer3" class="quiz_answer_textarea" spellcheck="false"></textarea>
-				</div>
-				<div>
-					<strong>4</strong><textarea name="" placeholder="보기를 작성해주세요" class='quiz_answer'id="quiz_answer4" class="quiz_answer_textarea" spellcheck="false"></textarea>
-				</div>
+			<div class="quiz_answer_container" data-value="typing" id="quiz_typing_container">
+				<ul id="typing_answer_list"></ul>
+			<div id="typing_answer_input_box">
+				<!-- <label>정답 추가</label> -->
+				<input id="typing_answer_input" type="text">
+				<div id="typing_answer_add_btn" ><img src="./assets/enter.png" alt=""></div>
 			</div>
-			<div class="quiz_answer_container" id="quiz_ox_container">
-				<div>
-					O
-				</div>
-				<div>
-					X
-				</div>
-			</div>
-			<div class="quiz_answer_container" id="quiz_typing_container">
-
 			</div>
 			<div id="quiz_item_action_btn_container">
-				<div id="quiz_item_complete_btn">완료</div>
+				<div id="quiz_item_complete_btn">저장</div>
 				<div id="quiz_item_cancle_btn" >취소</div>
 			</div>
+		 </section>  
+		<section id="ready">
+				<h3 id="ready_text">
+					아래 버튼을 클릭하면 퀴즈를 시작합니다.
+				</h3>
+				<h5 id="ready_text_detail">시청자에게 문제를 보냅니다.</h5>
+				<h5 id="ready_text_detail">퀴즈 제한 시간이 종료되면 해당 퀴즈의 정답이 노출됩니다.</h5>
+				<h5 id="ready_text_detail">다음 버튼을 클릭하면 다음 문제를 시작합니다.</h5>
+				<div id="ready_btn">
+					<img src="./assets/play.png" alt="">
+				</div>
+			
+		</section>
+		<section id="play">
+			<div id="timer_popup" class="popup">
+				<div class="popup_content">
+				</div>
+			</div>
+			<div id="point_popup" class="popup">
+				<div class="popup_content">
+				</div>
+			</div>
+			<div id="play_quiz_option_container">
+				<h4 ><img id="play_quiz_type_img" src="" alt=""><span id="play_quiz_type"></span></h4>
+				<h4 > <img id="play_quiz_img" src="./assets/stopwatch.png" alt=""><span id="play_quiz_timer"></span></h4>
+				<h4 ><img id="play_quiz_img" src="./assets/review.png" alt=""> <span id="play_quiz_point"></span></h4>
+			</div>
+
+			<div id="play_quiz_question_container">
+				<p id="play_quiz_question"></p>
+			</div>
+
 
 			
-		 </section>  
-		<!--<section id="play"></section>
-		<section id="history"></section> -->
+			<div class="play_quiz_answer_container" data-value="four" id="quiz_4answer_container">
+				<div>
+					채팅으로 1 2 3 4 중 하나를 입력해주세요
+				</div>
+				<ul id="play_quiz_choices_container">
+					<li class="play_quiz_choices_li" data-value="1"><span>1.</span><div class="play_quiz_choice_content"></div></li>
+					<li class="play_quiz_choices_li" data-value="2"><span>2.</span><div class="play_quiz_choice_content"></div></li>
+					<li class="play_quiz_choices_li" data-value="3"><span>3.</span><div class="play_quiz_choice_content"></div></li>
+					<li class="play_quiz_choices_li" data-value="4"><span>4.</span><div class="play_quiz_choice_content"></div></li>
+					
+				</ul>
+				
+			</div>
+			<div class="play_quiz_answer_container" data-value="ox" id="quiz_ox_container">
+				<div>
+					채팅으로 O(o), X(x) 중 하나를 입력해주세요
+				</div>
+					<div id="ox_answer_container">
+						<div class="ox_answer" id="play_o_answer">
+							O
+						</div>
+						<div class="ox_answer" id="play_x_answer">
+							X
+						</div>
+					</div>
+			</div>
+			<div class="play_quiz_answer_container" data-value="typing" id="quiz_typing_container">
+				<div>
+					채팅으로 정답을 입력해주세요
+				</div>
+				<div id="play_typing_answer_list"></div>
+			</div>
+			<div id="quiz_item_action_btn_container">
+				<div id="quiz_item_next_btn" ></div>
+			</div>
+
+
+
+		</section>
+
+		<section id="result">
+			
+			<ul id="result_container">
+				
+			</ul>
+		</section>
+		<!--<section id="history"></section> -->
 
 
 	</main>
